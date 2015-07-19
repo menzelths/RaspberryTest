@@ -15,11 +15,11 @@ public class RaspberryTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        System.out.println("<--Pi4J--> Programm gestarted.");
+        System.out.println("<--Pi4J--> Programm gestartet.");
         
         final GpioController gpio = GpioFactory.getInstance();
     
-        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MeineLED", PinState.LOW);
+        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "LED", PinState.LOW);
   
         // Durch den pulldown-Widerstand ist der Eingang ohne Signal auf Erde gelegt. Sobald der Knopf gedrückt wird, liegt das Potential 3,3V an
         final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_16, "Knopf", PinPullResistance.PULL_DOWN);
@@ -27,8 +27,8 @@ public class RaspberryTest {
         myButton.addListener((GpioPinListenerDigital) (GpioPinDigitalStateChangeEvent event) -> {
             
             System.out.println(" --> GPIO-Status wurde geändert: " + event.getPin() + " = " + event.getState());
-            if (event.getState() == PinState.HIGH) {
-                pin.toggle();
+            if (event.getState() == PinState.HIGH) { // wenn HIGH am Eingang anliegt, dann ...
+                pin.toggle(); // Zustand der LED ändern
             }
         });
     
