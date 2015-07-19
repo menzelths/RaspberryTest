@@ -15,4 +15,8 @@ Die Pins seien im folgenden von 1 bis 40 durchnummeriert:
 * LED mit Widerstand an GND und GPIO 18 (also PIN 12, entspricht in pi4j GPIO 1)
 
 ### Schaltskizze
-![Arduino-Verkabelung](https://github.com/menzelths/firmata/blob/master/src/main/resources/FirmataMitLCD/firmataDisplay.png)
+![Raspberry-Verkabelung](https://github.com/menzelths/RaspberryTest/blob/master/src/main/resources/Raspberry_input_output_Steckplatine.png)
+
+## Links:
+- [PI4J](http://pi4j.com/)
+- [Fritzing](http://fritzing.org/home/) zur Erstellung von Schaltbildern
