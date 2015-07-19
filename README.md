@@ -28,4 +28,4 @@ Die Pins seien im folgenden von 1 bis 40 durchnummeriert:
 ## Links:
 - [PI4J](http://pi4j.com/)
 - [Fritzing](http://fritzing.org/home/) zur Erstellung von Schaltbildern
-- [Pullup- und Pulldownwiderstände](http://www.bit-101.com/blog/?p=3813) Gute Erklärung (auf englisch)
+- [Pullup- und Pulldownwiderstände](http://www.bit-101.com/blog/?p=3813) (Gute englischsprachige Erklärung)
