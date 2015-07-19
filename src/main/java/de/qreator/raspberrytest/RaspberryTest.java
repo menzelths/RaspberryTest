@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package de.qreator.raspberrytest;
 
 import com.pi4j.io.gpio.GpioController;
@@ -15,10 +10,7 @@ import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 
-/**
- *
- * @author thomas
- */
+
 public class RaspberryTest {
 
     public static void main(String[] args) throws InterruptedException {
@@ -27,14 +19,14 @@ public class RaspberryTest {
         
         final GpioController gpio = GpioFactory.getInstance();
     
-        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.LOW);
+        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MeineLED", PinState.LOW);
   
         // Durch den pulldown-Widerstand ist der Eingang ohne Signal auf Erde gelegt. Sobald der Knopf gedrückt wird, liegt das Potential 3,3V an
         final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_16, "Knopf", PinPullResistance.PULL_DOWN);
 
         myButton.addListener((GpioPinListenerDigital) (GpioPinDigitalStateChangeEvent event) -> {
             
-            System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
+            System.out.println(" --> GPIO-Status wurde geändert: " + event.getPin() + " = " + event.getState());
             if (event.getState() == PinState.HIGH) {
                 pin.toggle();
             }
@@ -42,10 +34,9 @@ public class RaspberryTest {
     
         pin.setShutdownOptions(true, PinState.LOW);
 
+        // Endlosschleife, kann durch Ctrl-C unterbrochen werden
         for (;;) {
             Thread.sleep(500);
         }
-        
-        //gpio.shutdown();
     }
 }
